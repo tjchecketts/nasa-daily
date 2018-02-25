@@ -20,11 +20,11 @@ class App extends Component {
       data: {
         date, 
         explanation, 
-        // hdurl, 
+        hdurl, 
         // media_type, 
         // service_version, 
         title, 
-        url
+        // url
       } 
     } = this.state
 
@@ -34,7 +34,7 @@ class App extends Component {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url('${this.state.data.url}');
+      background-image: url('${this.state.data.hdurl}');
       width: 100%;
       height: 100%;
       opacity : 0.15;
@@ -65,7 +65,7 @@ class App extends Component {
           }}
         >
           <Image 
-            src={url} 
+            src={hdurl} 
           />
         </p>
       </div>
