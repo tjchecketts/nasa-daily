@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import url from "./utils/url.js"
-import ImagePage from "./components/ImagePage"
-import VideoPage from './components/VideoPage.js';
+import url from "../utils/url.js"
 
-class App extends Component {
+class VideoPage extends Component {
   state = { data: {} }
 
   componentWillMount = () => {
@@ -21,22 +19,31 @@ class App extends Component {
       data: {
         date, 
         explanation, 
-        hdurl, 
+        // hdurl, 
         media_type, 
         // service_version, 
         title, 
-        // url
+        url
       } 
     } = this.state
-
-    return(
-      media_type !== "video" 
-        ? 
-          <ImagePage /> 
-        : 
-          <VideoPage />
+    
+    return (
+      <div>
+        <div>
+          Today's NASA photo was actually... a video... 
+        </div>
+        <div>
+          This page is a work in progress
+        </div>
+        <div>
+          Here's the link to the video:
+        </div>
+        <a href={url} style={{color: 'white'}}>
+          {url}
+        </a>
+      </div>
     )
   }
 }
 
-export default App
+export default VideoPage
