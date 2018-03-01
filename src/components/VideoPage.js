@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import url from "../utils/url.js"
+import YouTube from 'react-youtube'
 
 class VideoPage extends Component {
   state = { data: {} }
@@ -13,6 +14,11 @@ class VideoPage extends Component {
       console.log(err)
     })
   }
+
+  _onReady(event) {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
+  }
   
   render() {
     let { 
@@ -20,27 +26,67 @@ class VideoPage extends Component {
         date, 
         explanation, 
         // hdurl, 
-        media_type, 
+        // media_type, 
         // service_version, 
         title, 
         url
       } 
     } = this.state
+
+    const opts = {
+      height: '390',
+      width: '640',
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1
+      }
+    }
+
+    // converts YouTube links to just the video id
+    const getId = (url) => {
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+  
+      if (match && match[2].length == 11) {
+          return match[2];
+      } else {
+          return 'error';
+      }
+    }
+
+    // for test scenarios
+    // var testerVideo = "https://www.youtube.com/embed/OfM7VlonD5c?rel=0"
+    // let videoId = getId(`${testerVideo}`)
+
+    let videoId = getId(`${url}`)
     
     return (
       <div>
         <div>
-          Today's NASA photo was actually... a video... 
+          (Today's NASA photo was actually... well, a video... This page is a work in progress)
         </div>
         <div>
-          This page is a work in progress
+          DATE: {date}
         </div>
         <div>
-          Here's the link to the video:
+          TITLE: {title}
+        </div>
+        <div>
+          DESCRIPTION: {explanation}
+        </div>
+        <div>
+          LINK TO THE VIDEO:
         </div>
         <a href={url} style={{color: 'white'}}>
           {url}
         </a>
+        <div>
+          (Also testing YouTube embedding... Here goes nothing!)
+        </div>
+        <YouTube
+          videoId={videoId}
+          opts={opts}
+          onReady={this._onReady}
+        />
       </div>
     )
   }
