@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import url from "./utils/url.js"
 import ImagePage from "./components/ImagePage"
 import VideoPage from './components/VideoPage.js';
@@ -19,12 +19,12 @@ class App extends Component {
   render() {
     let { 
       data: {
-        date, 
-        explanation, 
-        hdurl, 
+        // date, 
+        // explanation, 
+        // hdurl, 
         media_type, 
         // service_version, 
-        title, 
+        // title, 
         // url
       } 
     } = this.state
