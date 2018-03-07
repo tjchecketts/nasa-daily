@@ -26,7 +26,7 @@ class VideoPage extends Component {
         date, 
         explanation, 
         // hdurl, 
-        // media_type, 
+        media_type, 
         // service_version, 
         title, 
         url
