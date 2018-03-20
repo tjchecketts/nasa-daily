@@ -23,21 +23,18 @@ class ImagePage extends Component {
         // media_type, 
         // service_version, 
         title, 
-        // url
+        url,
       } 
     } = this.state
 
     const Background = styled.div`
-      content : "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-image: url('${this.state.data.hdurl}');
-      width: 100%;
-      height: 100%;
-      opacity : 0.15;
-      z-index: -1;
+      background-image: url('${url}');
+      background-position: 50% 50%; 
+    `
+
+    const TextBackground = styled.div`
+      background-color: black;
+      opacity: 0.88;
     `
 
     const Image = styled.img`
@@ -46,28 +43,34 @@ class ImagePage extends Component {
     `
     
     return (
-      <div>
-        <Background />
-        <div>
-          DATE: {date}
-        </div>
-        <div>
-          TITLE: {title}
-        </div>
-        <div>
-          DESCRIPTION: {explanation}
-        </div>
-        <p style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          }}
-        >
-          <Image 
-            src={hdurl} 
-          />
-        </p>
-      </div>
+      <Background>
+        <TextBackground>
+          <div>
+            DATE: {date}
+          </div>
+          <div>
+            TITLE: {title}
+          </div>
+          <div>
+            DESCRIPTION: {explanation}
+          </div>
+          <a
+            href={hdurl}
+            target="_blank"
+          >
+            <p style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              }}
+            >
+              <Image 
+                src={url} 
+              />
+            </p>
+          </a>
+        </TextBackground>
+      </Background>
     )
   }
 }

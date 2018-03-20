@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-// import styled from 'styled-components'
 import url from "./utils/url.js"
 import ImagePage from "./components/ImagePage"
 import VideoPage from './components/VideoPage.js';
@@ -25,7 +24,7 @@ class App extends Component {
         media_type, 
         // service_version, 
         // title, 
-        // url
+        // url,
       } 
     } = this.state
 

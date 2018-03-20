@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import url from "../utils/url.js"
 import YouTube from 'react-youtube'
 
+// converts YouTube links to just the video id
+const getId = (url) => {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+
+  if (match && match[2].length === 11) {
+      return match[2];
+  } else {
+      return 'error';
+  }
+}
+
 class VideoPage extends Component {
   state = { data: {} }
-
+  
   componentWillMount = () => {
     axios.get(url)
       .then( resp => this.setState({ data: resp.data }) )
@@ -26,7 +38,7 @@ class VideoPage extends Component {
         date, 
         explanation, 
         // hdurl, 
-        media_type, 
+        // media_type, 
         // service_version, 
         title, 
         url
@@ -36,20 +48,9 @@ class VideoPage extends Component {
     const opts = {
       height: '390',
       width: '640',
-      playerVars: { // https://developers.google.com/youtube/player_parameters
+      playerVars: { 
+        // https://developers.google.com/youtube/player_parameters
         autoplay: 1
-      }
-    }
-
-    // converts YouTube links to just the video id
-    const getId = (url) => {
-      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-      const match = url.match(regExp);
-  
-      if (match && match[2].length == 11) {
-          return match[2];
-      } else {
-          return 'error';
       }
     }
 
