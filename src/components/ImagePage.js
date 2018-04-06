@@ -4,18 +4,8 @@ import styled from 'styled-components'
 import url from "../utils/url.js"
 
 class ImagePage extends Component {
-  state = { data: {} }
-
-  componentWillMount = () => {
-    axios.get(url)
-      .then( resp => this.setState({ data: resp.data }) )
-    .catch(function (err) {
-      console.log(err)
-    })
-  }
-  
   render() {
-    let { 
+    const { 
       data: {
         date, 
         explanation, 
@@ -25,7 +15,7 @@ class ImagePage extends Component {
         title, 
         url,
       } 
-    } = this.state
+    } = this.props
 
     const Background = styled.div`
       background-image: url('${url}');

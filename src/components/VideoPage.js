@@ -17,23 +17,13 @@ const getId = (url) => {
 }
 
 class VideoPage extends Component {
-  state = { data: {} }
-  
-  componentWillMount = () => {
-    axios.get(url)
-      .then( resp => this.setState({ data: resp.data }) )
-    .catch(function (err) {
-      console.log(err)
-    })
-  }
-
   _onReady(event) {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
   }
   
   render() {
-    let { 
+    const { 
       data: {
         date, 
         explanation, 
@@ -43,7 +33,7 @@ class VideoPage extends Component {
         title, 
         url
       } 
-    } = this.state
+    } = this.props
 
     const opts = {
       height: '390',

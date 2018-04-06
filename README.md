@@ -7,10 +7,10 @@ I deployed this with Surge and will try to keep it updated, here's the link: htt
 Things to do:
 
 * Better styling
-* Fix CSS border on scroll down
-* Better format of data
+* ~~Fix CSS border on scroll down~~
+* ~~Better format of data~~
 * UX decision - display explanation?
 * Touch up VideoPage
-* Include Redux to better manage data?
+* ~~Include Redux to better manage data?~~ Reduce API calls and pass props instead.
 
 I'm also open to any suggestions, pull requests, or working with issues!

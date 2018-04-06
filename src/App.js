@@ -18,22 +18,22 @@ class App extends Component {
   render() {
     let { 
       data: {
-        // date, 
-        // explanation, 
-        // hdurl, 
+        date, 
+        explanation, 
+        hdurl, 
         media_type, 
-        // service_version, 
-        // title, 
-        // url,
+        service_version, 
+        title, 
+        url,
       } 
     } = this.state
-
+    
     return(
       media_type !== "video" 
         ? 
-          <ImagePage /> 
+          <ImagePage data={this.state.data}/> 
         : 
-          <VideoPage />
+          <VideoPage data={this.state.data}/>
     )
   }
 }
