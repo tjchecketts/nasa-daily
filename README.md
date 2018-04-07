@@ -12,5 +12,6 @@ Things to do:
 * UX decision - display explanation?
 * Touch up VideoPage
 * ~~Include Redux to better manage data?~~ Reduce API calls and pass props instead.
+* ~~Add loading animation~~
 
 I'm also open to any suggestions, pull requests, or working with issues!

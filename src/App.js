@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import url from "./utils/url.js"
-import ImagePage from "./components/ImagePage"
-import VideoPage from './components/VideoPage.js';
+import url from './utils/url.js'
+import ImagePage from './components/ImagePage'
+import VideoPage from './components/VideoPage'
+import Loader from './components/Loader'
 
 class App extends Component {
   state = { data: {} }
@@ -16,25 +17,14 @@ class App extends Component {
   }
   
   render() {
-    let { 
-      data: {
-        date, 
-        explanation, 
-        hdurl, 
-        media_type, 
-        service_version, 
-        title, 
-        url,
-      } 
-    } = this.state
+    let { data } = this.state
     
-    return(
-      media_type !== "video" 
-        ? 
-          <ImagePage data={this.state.data}/> 
-        : 
-          <VideoPage data={this.state.data}/>
-    )
+    if (data.media_type === "image")
+      return <ImagePage data={data}/> 
+    else if (data.media_type === "video")
+      return <VideoPage data={data}/>
+    else
+      return <Loader />
   }
 }
 

@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-// import styled from 'styled-components'
-import url from "../utils/url.js"
 import YouTube from 'react-youtube'
 
 // converts YouTube links to just the video id
@@ -53,7 +50,7 @@ class VideoPage extends Component {
     return (
       <div>
         <div>
-          (Today's NASA photo was actually... well, a video... This page is a work in progress)
+          Today's NASA photo was actually... well, a video...
         </div>
         <div>
           DATE: {date}
@@ -70,9 +67,6 @@ class VideoPage extends Component {
         <a href={url} style={{color: 'white'}}>
           {url}
         </a>
-        <div>
-          (Also testing YouTube embedding... Here goes nothing!)
-        </div>
         <YouTube
           videoId={videoId}
           opts={opts}
